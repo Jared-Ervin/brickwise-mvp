@@ -1,0 +1,20 @@
+{
+  "name": "brickwise",
+  "private": true,
+  "packageManager": "bun@1.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "bun run --workspaces build",
+    "dev": "bun run --workspaces --parallel dev",
+    "typecheck": "bun run --workspaces typecheck",
+    "lint": "bun run --workspaces lint",
+    "clean": "bun run --workspaces clean"
+  },
+  "dependencies": {
+    "@apollo/client": "^4.0.5",
+    "graphql": "^16.11.0"
+  }
+}
