@@ -1,0 +1,8 @@
+query Offerings($first: Int) {
+  offerings(first: $first) {
+    id
+    title
+    status
+  }
+}
+

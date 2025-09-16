@@ -1,13 +1,17 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { HelloDocument } from './gql/graphql';
 
 function App() {
+  const { data, loading, error } = useQuery(HelloDocument);
   return (
     <div style={{ padding: 24 }}>
       <h1>Brickwise Admin</h1>
-      <p>Admin console scaffold is running.</p>
+      {loading && <p>Loading…</p>}
+      {error && <p style={{ color: 'crimson' }}>Error: {error.message}</p>}
+      {data && <p>API says: {data.hello}</p>}
     </div>
   );
 }
 
 export default App;
-

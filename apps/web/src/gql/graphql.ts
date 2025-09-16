@@ -50,5 +50,13 @@ export type HelloQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type HelloQuery = { __typename?: 'Query', hello: string };
 
+export type OfferingsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type OfferingsQuery = { __typename?: 'Query', offerings: Array<{ __typename?: 'Offering', id: string, title: string, status: OfferingStatus }> };
+
 
 export const HelloDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Hello"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hello"}}]}}]} as unknown as DocumentNode<HelloQuery, HelloQueryVariables>;
+export const OfferingsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Offerings"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"first"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offerings"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"first"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]} as unknown as DocumentNode<OfferingsQuery, OfferingsQueryVariables>;
