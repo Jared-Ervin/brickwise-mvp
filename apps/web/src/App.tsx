@@ -1,18 +1,13 @@
-import { useState } from "react";
-import "./App.css";
-import { Ping } from "./components/Ping";
+import React from 'react';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <h1>Brickwise</h1>
-      <p>Vite + React + Apollo</p>
-      <Ping />
-      <button onClick={() => setCount((c) => c + 1)}>Count: {count}</button>
+    <div style={{ padding: 24 }}>
+      <h1>Brickwise Web</h1>
+      <p>Welcome to the Brickwise investor/borrower app scaffold.</p>
     </div>
   );
 }
 
 export default App;
+

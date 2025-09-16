@@ -1,14 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
-import { ApolloProvider } from "@apollo/client/react";
-import { client } from "./lib/apollo";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import './styles.css';
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>
-);
+const container = document.getElementById('root');
+if (!container) throw new Error('Root container missing');
+createRoot(container).render(<App />);
+

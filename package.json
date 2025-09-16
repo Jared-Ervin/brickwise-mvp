@@ -1,20 +1,30 @@
 {
   "name": "brickwise",
   "private": true,
-  "packageManager": "bun@1.1.0",
+  "version": "0.0.1",
+  "packageManager": "bun@1.1.22",
   "workspaces": [
     "apps/*",
+    "services/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "bun run --workspaces build",
-    "dev": "bun run --workspaces --parallel dev",
-    "typecheck": "bun run --workspaces typecheck",
-    "lint": "bun run --workspaces lint",
-    "clean": "bun run --workspaces clean"
+    "dev": "bun run dev:all",
+    "dev:all": "bunx concurrently -n web,admin,api -c blue,magenta,green -k \"bun --cwd apps/web dev\" \"bun --cwd apps/admin dev\" \"bun --cwd services/api dev\"",
+    "build": "bun run build:all",
+    "build:all": "bash -lc 'for d in apps/* services/* packages/*; do if [ -f \"$d/package.json\" ]; then echo Building $d; (cd \"$d\" && bun run build || true); fi; done'",
+    "lint": "bunx eslint . --ext .ts,.tsx",
+    "typecheck": "bash -lc 'set -e; for d in apps/* services/* packages/*; do if [ -f \"$d/tsconfig.json\" ]; then echo Typechecking $d; (cd \"$d\" && tsc -p tsconfig.json --noEmit); fi; done'",
+    "clean": "git clean -fdX"
   },
-  "dependencies": {
-    "@apollo/client": "^4.0.5",
-    "graphql": "^16.11.0"
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "concurrently": "^9.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "name": "@brickwise/config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./eslint/base": "./eslint/base.cjs",
+    "./tsconfig/base": "./tsconfig/base.json"
+  }
+}
+
