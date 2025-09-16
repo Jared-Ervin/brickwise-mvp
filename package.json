@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "bun run dev:all",
-    "dev:all": "bunx concurrently -n web,admin,api -c blue,magenta,green -k \"bun --cwd apps/web dev\" \"bun --cwd apps/admin dev\" \"bun --cwd services/api dev\"",
+    "dev:all": "bunx concurrently -n web,admin,api -c blue,magenta,green \"bun --cwd apps/web dev\" \"bun --cwd apps/admin dev\" \"bun --cwd services/api dev\"",
     "build": "bun run build:all",
     "build:all": "bash -lc 'for d in apps/* services/* packages/*; do if [ -f \"$d/package.json\" ]; then echo Building $d; (cd \"$d\" && bun run build || true); fi; done'",
     "lint": "bunx eslint . --ext .ts,.tsx",
