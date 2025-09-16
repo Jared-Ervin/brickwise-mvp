@@ -1,0 +1,28 @@
+# Brickwise GraphQL Schema (v0)
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  hello: String!
+  offerings(first: Int = 20): [Offering!]!
+}
+
+type Mutation {
+  _noop: Boolean
+}
+
+type Offering {
+  id: ID!
+  title: String!
+  status: OfferingStatus!
+}
+
+enum OfferingStatus {
+  DRAFT
+  ACTIVE
+  CLOSED
+}
+

@@ -14,10 +14,18 @@
     "build": "bun run build:all",
     "build:all": "bash -lc 'for d in apps/* services/* packages/*; do if [ -f \"$d/package.json\" ]; then echo Building $d; (cd \"$d\" && bun run build || true); fi; done'",
     "lint": "bunx eslint . --ext .ts,.tsx",
+    "codegen": "bunx graphql-codegen --config codegen.ts",
+    "codegen:watch": "bunx graphql-codegen --config codegen.ts --watch",
     "typecheck": "bash -lc 'set -e; for d in apps/* services/* packages/*; do if [ -f \"$d/tsconfig.json\" ]; then echo Typechecking $d; (cd \"$d\" && tsc -p tsconfig.json --noEmit); fi; done'",
     "clean": "git clean -fdX"
   },
   "devDependencies": {
+    "@brickwise/config": "workspace:*",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.6.2",
+    "@graphql-codegen/typescript": "^4.0.9",
+    "@graphql-codegen/typescript-resolvers": "^4.4.0",
+    "graphql": "^16.9.0",
     "@types/node": "^20.12.12",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",

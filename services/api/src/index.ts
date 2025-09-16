@@ -1,11 +1,12 @@
 import Fastify from 'fastify';
 import mercurius from 'mercurius';
-import { typeDefs, resolvers } from './schema';
+import { typeDefs as schemaSDL } from '@brickwise/gql-schema';
+import { resolvers } from './schema';
 
 const app = Fastify({ logger: true });
 
 app.register(mercurius, {
-  schema: typeDefs,
+  schema: schemaSDL,
   resolvers,
   graphiql: true,
 });
@@ -18,4 +19,3 @@ app
     app.log.error(err);
     process.exit(1);
   });
-

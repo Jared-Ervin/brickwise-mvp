@@ -1,0 +1,18 @@
+{
+  "name": "@brickwise/gql-schema",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "echo 'schema is source-only'",
+    "dev": "echo 'schema package does not run'"
+  },
+  "devDependencies": {
+    "graphql": "^16.9.0"
+  }
+}
