@@ -1,8 +1,10 @@
 import Fastify from 'fastify';
+import 'dotenv/config';
 import mercurius from 'mercurius';
 import { typeDefs as schemaSDL } from '@brickwise/gql-schema';
 import { resolvers } from './schema';
 import cors from '@fastify/cors';
+import { initDb } from './db';
 
 const app = Fastify({ logger: true });
 
@@ -33,7 +35,11 @@ app.register(mercurius, {
 const port = Number(process.env.PORT || 4000);
 app
   .listen({ port, host: '0.0.0.0' })
-  .then(() => app.log.info(`API listening on http://localhost:${port}/graphiql`))
+  .then(async () => {
+    const ok = await initDb();
+    if (!ok) app.log.warn('DB not available. Running in in-memory mode (set USE_DB=false to silence).');
+    app.log.info(`API listening on http://localhost:${port}/graphiql`);
+  })
   .catch((err) => {
     app.log.error(err);
     process.exit(1);

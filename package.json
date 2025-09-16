@@ -16,6 +16,8 @@
     "lint": "bunx eslint . --ext .ts,.tsx",
     "codegen": "bunx graphql-codegen --config codegen.ts",
     "codegen:watch": "bunx graphql-codegen --config codegen.ts --watch",
+    "db:generate": "bunx drizzle-kit generate",
+    "db:studio": "bunx drizzle-kit studio --port 4983",
     "typecheck": "bash -lc 'set -e; for d in apps/* services/* packages/*; do if [ -f \"$d/tsconfig.json\" ]; then echo Typechecking $d; (cd \"$d\" && tsc -p tsconfig.json --noEmit); fi; done'",
     "clean": "git clean -fdX"
   },

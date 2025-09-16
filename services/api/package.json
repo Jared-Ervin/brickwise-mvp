@@ -9,12 +9,16 @@
   },
   "dependencies": {
     "@brickwise/gql-schema": "workspace:*",
+    "@brickwise/db": "workspace:*",
     "@fastify/cors": "^9.0.1",
+    "drizzle-orm": "^0.32.2",
     "fastify": "^4.28.1",
     "mercurius": "^14.1.0",
     "graphql": "^16.9.0",
     "zod": "^3.23.8",
-    "ioredis": "^5.4.1"
+    "ioredis": "^5.4.1",
+    "pg": "^8.12.0",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "typescript": "^5.6.2"
